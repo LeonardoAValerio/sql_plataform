@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:sql_plataform/core/database/objectbox_manager.dart';
+import 'package:sql_plataform/data/models/config.dart';
 
-void main() {
+void main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await ObjectBoxManager.create();
+
   runApp(const MyApp());
 }
 

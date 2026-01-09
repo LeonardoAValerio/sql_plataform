@@ -14,7 +14,14 @@ import 'package:objectbox/internal.dart'; // generated code can access "internal
 import 'package:objectbox/objectbox.dart';
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
+import '../../data/models/chapter.dart';
+import '../../data/models/character.dart';
 import '../../data/models/config.dart';
+import '../../data/models/dialog.dart';
+import '../../data/models/faq.dart';
+import '../../data/models/level.dart';
+import '../../data/models/question.dart';
+import '../../data/models/type_question.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
@@ -42,6 +49,224 @@ final _entities = <ModelEntity>[
             flags: 0)
       ],
       relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(2, 4026142947515923249),
+      name: 'Chapter',
+      lastPropertyId: const IdUid(6, 6494314988716433767),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 4644118140909520489),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 788796418421744432),
+            name: 'name',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 1907527075787052505),
+            name: 'backgroundImgPath',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 9028804048534594010),
+            name: 'iconImgPath',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(5, 3120073222187559152),
+            name: 'defaultDialogs',
+            type: 30,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(6, 6494314988716433767),
+            name: 'characterId',
+            type: 11,
+            flags: 520,
+            indexId: const IdUid(1, 1688061469506516523),
+            relationTarget: 'Character')
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(3, 8096648039975529552),
+      name: 'Character',
+      lastPropertyId: const IdUid(3, 8362397607853133073),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 5182074133536915070),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 7881171307136898219),
+            name: 'name',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 8362397607853133073),
+            name: 'pathImg',
+            type: 9,
+            flags: 0)
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(4, 6790597163036036240),
+      name: 'Dialog',
+      lastPropertyId: const IdUid(3, 9092390901055908752),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 8466970104376533638),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 8840399903918463279),
+            name: 'texts',
+            type: 30,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 9092390901055908752),
+            name: 'characterId',
+            type: 11,
+            flags: 520,
+            indexId: const IdUid(2, 5959341007458686519),
+            relationTarget: 'Character')
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(5, 6250680057991102005),
+      name: 'Faq',
+      lastPropertyId: const IdUid(5, 4610042544240287436),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 2751526742840910371),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 2572241389846138005),
+            name: 'question',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 2097489139195251701),
+            name: 'answer',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 3494530799780771659),
+            name: 'idEmbedded',
+            type: 23,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(5, 4610042544240287436),
+            name: 'chapterId',
+            type: 11,
+            flags: 520,
+            indexId: const IdUid(3, 1452486384229606354),
+            relationTarget: 'Chapter')
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(6, 5261029919720953705),
+      name: 'Level',
+      lastPropertyId: const IdUid(6, 3024996013630160107),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 2008338575028605566),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 5743894411678190057),
+            name: 'name',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 6667148863445097928),
+            name: 'position',
+            type: 6,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 3534606672534024938),
+            name: 'dataLevel',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(5, 5694431318650626108),
+            name: 'isCompleted',
+            type: 1,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(6, 3024996013630160107),
+            name: 'chapterId',
+            type: 11,
+            flags: 520,
+            indexId: const IdUid(4, 4505094314459033172),
+            relationTarget: 'Chapter')
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(7, 469666036907704032),
+      name: 'Question',
+      lastPropertyId: const IdUid(4, 8383872855815783725),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 2642712880561709131),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 422635043587526580),
+            name: 'description',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 9087512862495903545),
+            name: 'dataQuestion',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(4, 8383872855815783725),
+            name: 'typeId',
+            type: 11,
+            flags: 520,
+            indexId: const IdUid(5, 5099350569552981473),
+            relationTarget: 'TypeQuestion')
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(8, 1052057082770648532),
+      name: 'TypeQuestion',
+      lastPropertyId: const IdUid(2, 1112241829991905681),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 5832656797562891221),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 1112241829991905681),
+            name: 'name',
+            type: 9,
+            flags: 0)
+      ],
+      relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[])
 ];
 
@@ -65,8 +290,8 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(1, 3175960776933132131),
-      lastIndexId: const IdUid(0, 0),
+      lastEntityId: const IdUid(8, 1052057082770648532),
+      lastIndexId: const IdUid(5, 5099350569552981473),
       lastRelationId: const IdUid(0, 0),
       lastSequenceId: const IdUid(0, 0),
       retiredEntityUids: const [],
@@ -107,6 +332,256 @@ ModelDefinition getObjectBoxModel() {
                 const fb.BoolReader().vTableGet(buffer, rootOffset, 8, false);
 
           return object;
+        }),
+    Chapter: EntityDefinition<Chapter>(
+        model: _entities[1],
+        toOneRelations: (Chapter object) => [object.character],
+        toManyRelations: (Chapter object) => {},
+        getId: (Chapter object) => object.id,
+        setId: (Chapter object, int id) {
+          object.id = id;
+        },
+        objectToFB: (Chapter object, fb.Builder fbb) {
+          final nameOffset = fbb.writeString(object.name);
+          final backgroundImgPathOffset =
+              fbb.writeString(object.backgroundImgPath);
+          final iconImgPathOffset = fbb.writeString(object.iconImgPath);
+          final defaultDialogsOffset = fbb.writeList(object.defaultDialogs
+              .map(fbb.writeString)
+              .toList(growable: false));
+          fbb.startTable(7);
+          fbb.addInt64(0, object.id);
+          fbb.addOffset(1, nameOffset);
+          fbb.addOffset(2, backgroundImgPathOffset);
+          fbb.addOffset(3, iconImgPathOffset);
+          fbb.addOffset(4, defaultDialogsOffset);
+          fbb.addInt64(5, object.character.targetId);
+          fbb.finish(fbb.endTable());
+          return object.id;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+
+          final object = Chapter(
+              name: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 6, ''),
+              backgroundImgPath: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 8, ''),
+              iconImgPath: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 10, ''),
+              defaultDialogs: const fb.ListReader<String>(
+                      fb.StringReader(asciiOptimization: true),
+                      lazy: false)
+                  .vTableGet(buffer, rootOffset, 12, []))
+            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          object.character.targetId =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 14, 0);
+          object.character.attach(store);
+          return object;
+        }),
+    Character: EntityDefinition<Character>(
+        model: _entities[2],
+        toOneRelations: (Character object) => [],
+        toManyRelations: (Character object) => {},
+        getId: (Character object) => object.id,
+        setId: (Character object, int id) {
+          object.id = id;
+        },
+        objectToFB: (Character object, fb.Builder fbb) {
+          final nameOffset = fbb.writeString(object.name);
+          final pathImgOffset = fbb.writeString(object.pathImg);
+          fbb.startTable(4);
+          fbb.addInt64(0, object.id);
+          fbb.addOffset(1, nameOffset);
+          fbb.addOffset(2, pathImgOffset);
+          fbb.finish(fbb.endTable());
+          return object.id;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+
+          final object = Character(
+              name: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 6, ''),
+              pathImg: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 8, ''))
+            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+
+          return object;
+        }),
+    Dialog: EntityDefinition<Dialog>(
+        model: _entities[3],
+        toOneRelations: (Dialog object) => [object.character],
+        toManyRelations: (Dialog object) => {},
+        getId: (Dialog object) => object.id,
+        setId: (Dialog object, int id) {
+          object.id = id;
+        },
+        objectToFB: (Dialog object, fb.Builder fbb) {
+          final textsOffset = fbb.writeList(
+              object.texts.map(fbb.writeString).toList(growable: false));
+          fbb.startTable(4);
+          fbb.addInt64(0, object.id);
+          fbb.addOffset(1, textsOffset);
+          fbb.addInt64(2, object.character.targetId);
+          fbb.finish(fbb.endTable());
+          return object.id;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+
+          final object = Dialog(
+              texts: const fb.ListReader<String>(
+                      fb.StringReader(asciiOptimization: true),
+                      lazy: false)
+                  .vTableGet(buffer, rootOffset, 6, []))
+            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          object.character.targetId =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0);
+          object.character.attach(store);
+          return object;
+        }),
+    Faq: EntityDefinition<Faq>(
+        model: _entities[4],
+        toOneRelations: (Faq object) => [object.chapter],
+        toManyRelations: (Faq object) => {},
+        getId: (Faq object) => object.id,
+        setId: (Faq object, int id) {
+          object.id = id;
+        },
+        objectToFB: (Faq object, fb.Builder fbb) {
+          final questionOffset = fbb.writeString(object.question);
+          final answerOffset = fbb.writeString(object.answer);
+          final idEmbeddedOffset = fbb.writeListInt8(object.idEmbedded);
+          fbb.startTable(6);
+          fbb.addInt64(0, object.id);
+          fbb.addOffset(1, questionOffset);
+          fbb.addOffset(2, answerOffset);
+          fbb.addOffset(3, idEmbeddedOffset);
+          fbb.addInt64(4, object.chapter.targetId);
+          fbb.finish(fbb.endTable());
+          return object.id;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+
+          final object = Faq(
+              question: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 6, ''),
+              answer: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 8, ''),
+              idEmbedded: const fb.Uint8ListReader(lazy: false)
+                  .vTableGet(buffer, rootOffset, 10, Uint8List(0)) as Uint8List)
+            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          object.chapter.targetId =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 12, 0);
+          object.chapter.attach(store);
+          return object;
+        }),
+    Level: EntityDefinition<Level>(
+        model: _entities[5],
+        toOneRelations: (Level object) => [object.chapter],
+        toManyRelations: (Level object) => {},
+        getId: (Level object) => object.id,
+        setId: (Level object, int id) {
+          object.id = id;
+        },
+        objectToFB: (Level object, fb.Builder fbb) {
+          final nameOffset = fbb.writeString(object.name);
+          final dataLevelOffset = fbb.writeString(object.dataLevel);
+          fbb.startTable(7);
+          fbb.addInt64(0, object.id);
+          fbb.addOffset(1, nameOffset);
+          fbb.addInt64(2, object.position);
+          fbb.addOffset(3, dataLevelOffset);
+          fbb.addBool(4, object.isCompleted);
+          fbb.addInt64(5, object.chapter.targetId);
+          fbb.finish(fbb.endTable());
+          return object.id;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+
+          final object = Level(
+              name: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 6, ''),
+              position:
+                  const fb.Int64Reader().vTableGet(buffer, rootOffset, 8, 0),
+              dataLevel: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 10, ''),
+              isCompleted: const fb.BoolReader()
+                  .vTableGet(buffer, rootOffset, 12, false))
+            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          object.chapter.targetId =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 14, 0);
+          object.chapter.attach(store);
+          return object;
+        }),
+    Question: EntityDefinition<Question>(
+        model: _entities[6],
+        toOneRelations: (Question object) => [object.type],
+        toManyRelations: (Question object) => {},
+        getId: (Question object) => object.id,
+        setId: (Question object, int id) {
+          object.id = id;
+        },
+        objectToFB: (Question object, fb.Builder fbb) {
+          final descriptionOffset = fbb.writeString(object.description);
+          final dataQuestionOffset = fbb.writeString(object.dataQuestion);
+          fbb.startTable(5);
+          fbb.addInt64(0, object.id);
+          fbb.addOffset(1, descriptionOffset);
+          fbb.addOffset(2, dataQuestionOffset);
+          fbb.addInt64(3, object.type.targetId);
+          fbb.finish(fbb.endTable());
+          return object.id;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+
+          final object = Question(
+              description: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 6, ''),
+              dataQuestion: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 8, ''))
+            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+          object.type.targetId =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 10, 0);
+          object.type.attach(store);
+          return object;
+        }),
+    TypeQuestion: EntityDefinition<TypeQuestion>(
+        model: _entities[7],
+        toOneRelations: (TypeQuestion object) => [],
+        toManyRelations: (TypeQuestion object) => {},
+        getId: (TypeQuestion object) => object.id,
+        setId: (TypeQuestion object, int id) {
+          object.id = id;
+        },
+        objectToFB: (TypeQuestion object, fb.Builder fbb) {
+          final nameOffset = fbb.writeString(object.name);
+          fbb.startTable(3);
+          fbb.addInt64(0, object.id);
+          fbb.addOffset(1, nameOffset);
+          fbb.finish(fbb.endTable());
+          return object.id;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+
+          final object = TypeQuestion(
+              name: const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 6, ''))
+            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
+
+          return object;
         })
   };
 
@@ -125,4 +600,131 @@ class Config_ {
   /// see [Config.insertedTables]
   static final insertedTables =
       QueryBooleanProperty<Config>(_entities[0].properties[2]);
+}
+
+/// [Chapter] entity fields to define ObjectBox queries.
+class Chapter_ {
+  /// see [Chapter.id]
+  static final id = QueryIntegerProperty<Chapter>(_entities[1].properties[0]);
+
+  /// see [Chapter.name]
+  static final name = QueryStringProperty<Chapter>(_entities[1].properties[1]);
+
+  /// see [Chapter.backgroundImgPath]
+  static final backgroundImgPath =
+      QueryStringProperty<Chapter>(_entities[1].properties[2]);
+
+  /// see [Chapter.iconImgPath]
+  static final iconImgPath =
+      QueryStringProperty<Chapter>(_entities[1].properties[3]);
+
+  /// see [Chapter.defaultDialogs]
+  static final defaultDialogs =
+      QueryStringVectorProperty<Chapter>(_entities[1].properties[4]);
+
+  /// see [Chapter.character]
+  static final character =
+      QueryRelationToOne<Chapter, Character>(_entities[1].properties[5]);
+}
+
+/// [Character] entity fields to define ObjectBox queries.
+class Character_ {
+  /// see [Character.id]
+  static final id = QueryIntegerProperty<Character>(_entities[2].properties[0]);
+
+  /// see [Character.name]
+  static final name =
+      QueryStringProperty<Character>(_entities[2].properties[1]);
+
+  /// see [Character.pathImg]
+  static final pathImg =
+      QueryStringProperty<Character>(_entities[2].properties[2]);
+}
+
+/// [Dialog] entity fields to define ObjectBox queries.
+class Dialog_ {
+  /// see [Dialog.id]
+  static final id = QueryIntegerProperty<Dialog>(_entities[3].properties[0]);
+
+  /// see [Dialog.texts]
+  static final texts =
+      QueryStringVectorProperty<Dialog>(_entities[3].properties[1]);
+
+  /// see [Dialog.character]
+  static final character =
+      QueryRelationToOne<Dialog, Character>(_entities[3].properties[2]);
+}
+
+/// [Faq] entity fields to define ObjectBox queries.
+class Faq_ {
+  /// see [Faq.id]
+  static final id = QueryIntegerProperty<Faq>(_entities[4].properties[0]);
+
+  /// see [Faq.question]
+  static final question = QueryStringProperty<Faq>(_entities[4].properties[1]);
+
+  /// see [Faq.answer]
+  static final answer = QueryStringProperty<Faq>(_entities[4].properties[2]);
+
+  /// see [Faq.idEmbedded]
+  static final idEmbedded =
+      QueryByteVectorProperty<Faq>(_entities[4].properties[3]);
+
+  /// see [Faq.chapter]
+  static final chapter =
+      QueryRelationToOne<Faq, Chapter>(_entities[4].properties[4]);
+}
+
+/// [Level] entity fields to define ObjectBox queries.
+class Level_ {
+  /// see [Level.id]
+  static final id = QueryIntegerProperty<Level>(_entities[5].properties[0]);
+
+  /// see [Level.name]
+  static final name = QueryStringProperty<Level>(_entities[5].properties[1]);
+
+  /// see [Level.position]
+  static final position =
+      QueryIntegerProperty<Level>(_entities[5].properties[2]);
+
+  /// see [Level.dataLevel]
+  static final dataLevel =
+      QueryStringProperty<Level>(_entities[5].properties[3]);
+
+  /// see [Level.isCompleted]
+  static final isCompleted =
+      QueryBooleanProperty<Level>(_entities[5].properties[4]);
+
+  /// see [Level.chapter]
+  static final chapter =
+      QueryRelationToOne<Level, Chapter>(_entities[5].properties[5]);
+}
+
+/// [Question] entity fields to define ObjectBox queries.
+class Question_ {
+  /// see [Question.id]
+  static final id = QueryIntegerProperty<Question>(_entities[6].properties[0]);
+
+  /// see [Question.description]
+  static final description =
+      QueryStringProperty<Question>(_entities[6].properties[1]);
+
+  /// see [Question.dataQuestion]
+  static final dataQuestion =
+      QueryStringProperty<Question>(_entities[6].properties[2]);
+
+  /// see [Question.type]
+  static final type =
+      QueryRelationToOne<Question, TypeQuestion>(_entities[6].properties[3]);
+}
+
+/// [TypeQuestion] entity fields to define ObjectBox queries.
+class TypeQuestion_ {
+  /// see [TypeQuestion.id]
+  static final id =
+      QueryIntegerProperty<TypeQuestion>(_entities[7].properties[0]);
+
+  /// see [TypeQuestion.name]
+  static final name =
+      QueryStringProperty<TypeQuestion>(_entities[7].properties[1]);
 }

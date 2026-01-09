@@ -26,10 +26,233 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "2:4026142947515923249",
+      "lastPropertyId": "6:6494314988716433767",
+      "name": "Chapter",
+      "properties": [
+        {
+          "id": "1:4644118140909520489",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:788796418421744432",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:1907527075787052505",
+          "name": "backgroundImgPath",
+          "type": 9
+        },
+        {
+          "id": "4:9028804048534594010",
+          "name": "iconImgPath",
+          "type": 9
+        },
+        {
+          "id": "5:3120073222187559152",
+          "name": "defaultDialogs",
+          "type": 30
+        },
+        {
+          "id": "6:6494314988716433767",
+          "name": "characterId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "1:1688061469506516523",
+          "relationTarget": "Character"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:8096648039975529552",
+      "lastPropertyId": "3:8362397607853133073",
+      "name": "Character",
+      "properties": [
+        {
+          "id": "1:5182074133536915070",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:7881171307136898219",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:8362397607853133073",
+          "name": "pathImg",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:6790597163036036240",
+      "lastPropertyId": "3:9092390901055908752",
+      "name": "Dialog",
+      "properties": [
+        {
+          "id": "1:8466970104376533638",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8840399903918463279",
+          "name": "texts",
+          "type": 30
+        },
+        {
+          "id": "3:9092390901055908752",
+          "name": "characterId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "2:5959341007458686519",
+          "relationTarget": "Character"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:6250680057991102005",
+      "lastPropertyId": "5:4610042544240287436",
+      "name": "Faq",
+      "properties": [
+        {
+          "id": "1:2751526742840910371",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2572241389846138005",
+          "name": "question",
+          "type": 9
+        },
+        {
+          "id": "3:2097489139195251701",
+          "name": "answer",
+          "type": 9
+        },
+        {
+          "id": "4:3494530799780771659",
+          "name": "idEmbedded",
+          "type": 23
+        },
+        {
+          "id": "5:4610042544240287436",
+          "name": "chapterId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "3:1452486384229606354",
+          "relationTarget": "Chapter"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "6:5261029919720953705",
+      "lastPropertyId": "6:3024996013630160107",
+      "name": "Level",
+      "properties": [
+        {
+          "id": "1:2008338575028605566",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5743894411678190057",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:6667148863445097928",
+          "name": "position",
+          "type": 6
+        },
+        {
+          "id": "4:3534606672534024938",
+          "name": "dataLevel",
+          "type": 9
+        },
+        {
+          "id": "5:5694431318650626108",
+          "name": "isCompleted",
+          "type": 1
+        },
+        {
+          "id": "6:3024996013630160107",
+          "name": "chapterId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "4:4505094314459033172",
+          "relationTarget": "Chapter"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "7:469666036907704032",
+      "lastPropertyId": "4:8383872855815783725",
+      "name": "Question",
+      "properties": [
+        {
+          "id": "1:2642712880561709131",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:422635043587526580",
+          "name": "description",
+          "type": 9
+        },
+        {
+          "id": "3:9087512862495903545",
+          "name": "dataQuestion",
+          "type": 9
+        },
+        {
+          "id": "4:8383872855815783725",
+          "name": "typeId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "5:5099350569552981473",
+          "relationTarget": "TypeQuestion"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "8:1052057082770648532",
+      "lastPropertyId": "2:1112241829991905681",
+      "name": "TypeQuestion",
+      "properties": [
+        {
+          "id": "1:5832656797562891221",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1112241829991905681",
+          "name": "name",
+          "type": 9
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "1:3175960776933132131",
-  "lastIndexId": "0:0",
+  "lastEntityId": "8:1052057082770648532",
+  "lastIndexId": "5:5099350569552981473",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
