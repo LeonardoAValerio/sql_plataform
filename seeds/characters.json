@@ -1,0 +1,17 @@
+[
+    {
+        "refId": 1,
+        "name": "MegaHacker 3000",
+        "pathImg": "/MegaHacker.png"
+    },
+    {
+        "refId": 2,
+        "name": "Rei",
+        "pathImg": "/rei.png"
+    },
+    {
+        "refId": 3,
+        "name": "Princesa",
+        "pathImg": "/princesa.png"
+    }
+]

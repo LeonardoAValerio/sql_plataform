@@ -1,0 +1,26 @@
+[
+    {
+        "refId": 1,
+        "characterId": 1,
+        "texts": [
+            "Salve $, de boa?",
+            "Seguinte parça, a parada deu ruim, e tem uns game precisando do nosso help",
+            "Mas fica de boa que nois vai ajudando aos poucos"
+        ]
+    },
+    {
+        "refId": 2,
+        "characterId": 1,
+        "texts": [
+            "Primeiro parça, pa tu entender, o bagulho é loco"
+        ]
+    },
+    {
+        "refId": 3,
+        "characterId": 2,
+        "texts": [
+            "Ola vossa senhoria, necessito da sua ajuda para garantir a vitoria de meu reino",
+            "Vários dos meus comparsas estão precisando de alguns auxilios e eu estou focado em outras batalhas"
+        ]
+    }
+]
