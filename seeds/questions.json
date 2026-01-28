@@ -16,16 +16,20 @@
     {
         "refId": 2,
         "typeQuestionId": 2,
-        "description": "Faça um Insert, que adicione um novo bárbaro chamado 'Cleber' no exercito",
+        "description": "Faça um SELECT que encontre o bárbaro dentro da tabela 'exercito' chamado 'Cleber'",
         "dataQuestion": {
-            "database": "CREATE TABLE exercito ()",
+            "databaseQuery": "CREATE TABLE exercito (\n id INTEGER PRIMARY KEY AUTOINCREMENT,\n nome VARCHAR(100) NOT NULL,\n tipo VARCHAR(50) NOT NULL\n);",
+            "insertCommand": "INSERT INTO exercito (nome, tipo) VALUES ('Cleber', 'Bárbaro');",
             "result": {
                 "type": "SELECT",
-                "command": "SELECT * FROM exercito WHERE nome = 'CLEBER'",
-                "result": {
-                    "nome": "Cleber",
-                    "tipo": "Bárbaro"
-                }
+                "command": "SELECT * FROM exercito WHERE nome = 'Cleber';",
+                "result": [
+                    {
+                        "id": 1,
+                        "nome": "Cleber",
+                        "tipo": "Bárbaro"
+                    }
+                ]
             }
         }
     }
