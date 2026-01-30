@@ -13,5 +13,10 @@
         "refId": 3,
         "name": "Princesa",
         "pathImg": "/princesa.png"
+    },
+    {
+        "refId": 4,
+        "name": "Gamer",
+        "pathImg": "/gamer.png"
     }
-]
+] 

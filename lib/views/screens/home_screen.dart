@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
+import 'package:sql_plataform/models/config.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -11,39 +12,86 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final TextEditingController _usernameController = TextEditingController();
 
-  void _incrementCounter() {
-    print(ObjectBoxManager.typeQuestionBox.getAll());
-    
-    setState(() {
-      _counter++;
-    });
+  Future<void> _createUsernameConfig(String username) async {
+    ObjectBoxManager.configBox.put(
+      Config(username: username),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/background.png'),
+                fit: BoxFit.cover,
+              ),
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+          ),
+          Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Olá estranho..\nQual o seu nome?',
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                SizedBox(
+                  width: 260,
+                  child: TextField(
+                    controller: _usernameController,
+                    maxLength: 16,
+                    style: const TextStyle(color: Colors.white),
+                    decoration: const InputDecoration(
+                      counterText: '',
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                SizedBox(
+                  width: 120,
+                  height: 40,
+                  child: OutlinedButton(
+                    onPressed: () {
+                      final username =
+                          _usernameController.text.trim();
+
+                      if (username.isEmpty) {
+                        return;
+                      }
+
+                      _createUsernameConfig(username);
+                    },
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: Colors.white),
+                    ),
+                    child: const Text(
+                      'OK',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

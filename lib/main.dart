@@ -4,6 +4,7 @@ import 'package:sql_plataform/core/utils/database_seeder.dart';
 import 'package:sql_plataform/views/screens/home_screen.dart';
 
 void main()async {
+  print("Starting application...");
   WidgetsFlutterBinding.ensureInitialized();
   await ObjectBoxManager.create();
 
