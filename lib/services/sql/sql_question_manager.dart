@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sql_plataform/core/database/objectbox.g.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/models/question.dart';
 import 'package:sql_plataform/services/sql/sql_execution_result.dart';
@@ -103,7 +104,7 @@ class SQLQuestionManager {
       );
     }
   }
-
+  
   Future<Map<String, dynamic>> _executeByType(SQLQuestionExecutor executor) async {
     switch (executor.type.toUpperCase()) {
       case 'SELECT':
@@ -133,7 +134,7 @@ class SQLQuestionManager {
   }
 
   Future<void> _insertQuestionsData(Database database) async {
-    final Question? question = ObjectBoxManager.questionBox.get(refIdQuestion);
+    final Question? question = ObjectBoxManager.questionBox.query(Question_.refId.equals(refIdQuestion)).build().findFirst();
 
     if (question == null) {
       throw ArgumentError("Question not found with id: $refIdQuestion");
@@ -158,7 +159,6 @@ class SQLQuestionManager {
     }
   }
 
-  // Método útil para debug
   Future<List<Map<String, dynamic>>> getAllTables() async {
     final result = await db.rawQuery(
       "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name"
@@ -166,7 +166,6 @@ class SQLQuestionManager {
     return result;
   }
 
-  // Método útil para ver dados de uma tabela
   Future<List<Map<String, dynamic>>> getTableData(String tableName) async {
     final result = await db.rawQuery("SELECT * FROM $tableName");
     return result;

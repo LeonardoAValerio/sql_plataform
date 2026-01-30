@@ -1,28 +1,27 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:sql_plataform/core/database/objectbox.g.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/core/utils/database_seeder.dart';
 import 'package:sql_plataform/services/sql/sql_question_executor.dart';
 import 'package:sql_plataform/services/sql/sql_question_manager.dart';
+import 'package:sql_plataform/services/sql/sql_question_evaluator.dart';
 import 'package:sql_plataform/views/screens/home_screen.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() async {
+  if (kIsWeb || defaultTargetPlatform == TargetPlatform.linux || defaultTargetPlatform == TargetPlatform.windows) {
+    databaseFactory = databaseFactoryFfi;
+  }
   WidgetsFlutterBinding.ensureInitialized();
+  
   await ObjectBoxManager.create();
 
   final seeder = DatabaseSeeder();
   await seeder.clearAll();
   await seeder.seedAll();
-
-  final question = ObjectBoxManager.questionBox.get(2);
-  final dataQuestion = jsonDecode(question!.dataQuestion);
-  final result = dataQuestion['result'];
-
-  final manager = new SQLQuestionManager(refIdQuestion: question!.id);
-  final executor = new SQLQuestionExecutor(type: result['type'], query: "SELECT * FROM exercito");
-  final resultQuery = await manager.executeQuery(executor);
-  print(resultQuery);
 
   runApp(const MyApp());
 }

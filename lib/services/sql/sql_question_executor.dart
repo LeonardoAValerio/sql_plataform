@@ -8,7 +8,6 @@ class SQLQuestionExecutor {
   });
 
   ValidationResult validate() {
-    // Remove espaços extras
     final cleanQuery = query.trim();
 
     if (cleanQuery.isEmpty) {
@@ -18,7 +17,6 @@ class SQLQuestionExecutor {
       );
     }
 
-    // Valida se o tipo corresponde ao início da query
     final queryType = _extractQueryType(cleanQuery);
     
     if (queryType.toUpperCase() != type.toUpperCase()) {
@@ -28,7 +26,6 @@ class SQLQuestionExecutor {
       );
     }
 
-    // Validações básicas de segurança (opcional)
     if (_containsDangerousOperations(cleanQuery)) {
       return ValidationResult(
         isValid: false,
@@ -51,7 +48,6 @@ class SQLQuestionExecutor {
     return dangerous.any((op) => upperQuery.contains(op));
   }
 
-  // Factory para criar executores facilmente
   factory SQLQuestionExecutor.select(String query) {
     return SQLQuestionExecutor(type: 'SELECT', query: query);
   }

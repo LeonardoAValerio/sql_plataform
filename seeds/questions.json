@@ -16,13 +16,32 @@
     {
         "refId": 2,
         "typeQuestionId": 2,
-        "description": "Faça um SELECT que encontre o bárbaro dentro da tabela 'exercito' chamado 'Cleber'",
+        "description": "Faça um SELECT que encontre todas as informações do bárbaro dentro da tabela 'exercito' com o *nome* 'Cleber'",
         "dataQuestion": {
             "databaseQuery": "CREATE TABLE exercito (\n id INTEGER PRIMARY KEY AUTOINCREMENT,\n nome VARCHAR(100) NOT NULL,\n tipo VARCHAR(50) NOT NULL\n);",
-            "insertCommand": "INSERT INTO exercito (nome, tipo) VALUES ('Cleber', 'Bárbaro');",
+            "insertCommand": "INSERT INTO exercito (nome, tipo) VALUES ('Cleber', 'Bárbaro'), ('José', 'Bárbaro');",
             "result": {
                 "type": "SELECT",
-                "command": "SELECT * FROM exercito WHERE nome = 'Cleber';",
+                "result": [
+                    {
+                        "id": 1,
+                        "nome": "Cleber",
+                        "tipo": "Bárbaro"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "refId": 3,
+        "typeQuestionId": 2,
+        "description": "Insira uma nova tropa na tabela 'exercito', com o *nome* 'Cleber' e do *tipo* 'Bárbaro'",
+        "dataQuestion": {
+            "databaseQuery": "CREATE TABLE exercito (\n id INTEGER PRIMARY KEY AUTOINCREMENT,\n nome VARCHAR(100) NOT NULL,\n tipo VARCHAR(50) NOT NULL\n);",
+            "insertCommand": "",
+            "result": {
+                "type": "INSERT",
+                "query": "SELECT * FROM exercito;",
                 "result": [
                     {
                         "id": 1,
