@@ -1,13 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sql_plataform/core/database/objectbox.g.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/core/utils/database_seeder.dart';
-import 'package:sql_plataform/services/sql/sql_question_executor.dart';
-import 'package:sql_plataform/services/sql/sql_question_manager.dart';
-import 'package:sql_plataform/services/sql/sql_question_evaluator.dart';
 import 'package:sql_plataform/views/screens/home_screen.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
