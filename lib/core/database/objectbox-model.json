@@ -54,7 +54,7 @@
     },
     {
       "id": "2:8572854090930341858",
-      "lastPropertyId": "4:4315755590890387020",
+      "lastPropertyId": "6:4782220511215671974",
       "name": "Character",
       "properties": [
         {
@@ -76,8 +76,13 @@
           "type": 9
         },
         {
-          "id": "4:4315755590890387020",
-          "name": "pathImg",
+          "id": "5:3694571887428220167",
+          "name": "defaultImg",
+          "type": 9
+        },
+        {
+          "id": "6:4782220511215671974",
+          "name": "speakingImg",
           "type": 9
         }
       ],
@@ -310,7 +315,9 @@
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    4315755590890387020
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

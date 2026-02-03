@@ -76,7 +76,7 @@ final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
       id: const obx_int.IdUid(2, 8572854090930341858),
       name: 'Character',
-      lastPropertyId: const obx_int.IdUid(4, 4315755590890387020),
+      lastPropertyId: const obx_int.IdUid(6, 4782220511215671974),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
@@ -96,8 +96,13 @@ final _entities = <obx_int.ModelEntity>[
             type: 9,
             flags: 0),
         obx_int.ModelProperty(
-            id: const obx_int.IdUid(4, 4315755590890387020),
-            name: 'pathImg',
+            id: const obx_int.IdUid(5, 3694571887428220167),
+            name: 'defaultImg',
+            type: 9,
+            flags: 0),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(6, 4782220511215671974),
+            name: 'speakingImg',
             type: 9,
             flags: 0)
       ],
@@ -357,7 +362,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
       lastSequenceId: const obx_int.IdUid(0, 0),
       retiredEntityUids: const [],
       retiredIndexUids: const [],
-      retiredPropertyUids: const [],
+      retiredPropertyUids: const [4315755590890387020],
       retiredRelationUids: const [],
       modelVersion: 5,
       modelVersionParserMinimum: 5,
@@ -430,12 +435,16 @@ obx_int.ModelDefinition getObjectBoxModel() {
         },
         objectToFB: (Character object, fb.Builder fbb) {
           final nameOffset = fbb.writeString(object.name);
-          final pathImgOffset = fbb.writeString(object.pathImg);
-          fbb.startTable(5);
+          final defaultImgOffset = object.defaultImg == null
+              ? null
+              : fbb.writeString(object.defaultImg!);
+          final speakingImgOffset = fbb.writeString(object.speakingImg);
+          fbb.startTable(7);
           fbb.addInt64(0, object.id);
           fbb.addInt64(1, object.refId);
           fbb.addOffset(2, nameOffset);
-          fbb.addOffset(3, pathImgOffset);
+          fbb.addOffset(4, defaultImgOffset);
+          fbb.addOffset(5, speakingImgOffset);
           fbb.finish(fbb.endTable());
           return object.id;
         },
@@ -446,10 +455,16 @@ obx_int.ModelDefinition getObjectBoxModel() {
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 6, 0);
           final nameParam = const fb.StringReader(asciiOptimization: true)
               .vTableGet(buffer, rootOffset, 8, '');
-          final pathImgParam = const fb.StringReader(asciiOptimization: true)
-              .vTableGet(buffer, rootOffset, 10, '');
+          final defaultImgParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGetNullable(buffer, rootOffset, 12);
+          final speakingImgParam =
+              const fb.StringReader(asciiOptimization: true)
+                  .vTableGet(buffer, rootOffset, 14, '');
           final object = Character(
-              refId: refIdParam, name: nameParam, pathImg: pathImgParam)
+              refId: refIdParam,
+              name: nameParam,
+              defaultImg: defaultImgParam,
+              speakingImg: speakingImgParam)
             ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
 
           return object;
@@ -730,9 +745,13 @@ class Character_ {
   static final name =
       obx.QueryStringProperty<Character>(_entities[1].properties[2]);
 
-  /// See [Character.pathImg].
-  static final pathImg =
+  /// See [Character.defaultImg].
+  static final defaultImg =
       obx.QueryStringProperty<Character>(_entities[1].properties[3]);
+
+  /// See [Character.speakingImg].
+  static final speakingImg =
+      obx.QueryStringProperty<Character>(_entities[1].properties[4]);
 }
 
 /// [Config] entity fields to define ObjectBox queries.
