@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/models/config.dart';
+import 'package:sql_plataform/views/screens/first_dialog.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -76,8 +77,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       if (username.isEmpty) {
                         return;
                       }
-
                       _createUsernameConfig(username);
+                      
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FirstDialogScreen(),
+                        ),
+                      );
                     },
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Colors.white),

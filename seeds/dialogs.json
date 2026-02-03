@@ -3,7 +3,7 @@
         "refId": 1,
         "characterId": 1,
         "texts": [
-            "Salve $, de boa?",
+            "Salve $user, de boa?",
             "Seguinte parça, a parada deu ruim, e tem uns game precisando do nosso help",
             "Mas fica de boa que nois vai ajudando aos poucos"
         ]
