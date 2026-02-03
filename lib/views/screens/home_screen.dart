@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
+import 'package:sql_plataform/views/screens/chapter_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -41,7 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () => Navigator.push(context, MaterialPageRoute(
+            builder: (context) => ChapterScreen(1),
+        )),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),

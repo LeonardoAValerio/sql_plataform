@@ -30,6 +30,13 @@ class ChapterScreen extends StatelessWidget {
     }
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        iconTheme: IconThemeData(
+          color: Colors.white, // ou a cor que você quiser para a seta
+        ),
+      ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
