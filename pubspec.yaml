@@ -13,8 +13,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  objectbox: ^1.7.0
+  objectbox: ^4.0.3
   objectbox_flutter_libs: any
+  path_provider: ^2.1.1
+  path: ^1.8.3
 
   cupertino_icons: ^1.0.8
 
@@ -45,6 +47,12 @@ flutter:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/images/background.png
+    - assets/images/hacker.png
+    - assets/images/hacker_textbox.png
+    - assets/images/crown_cr.png
+    - assets/images/unknown_phase.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

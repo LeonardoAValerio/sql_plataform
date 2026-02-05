@@ -1,0 +1,10 @@
+[
+    {
+        "refId": 1,
+        "characterId": 1,
+        "name": "Clash Royale",
+        "backgroundImgPath": "/background-clash-royale.png",
+        "iconImgPath": "/icon-clash-royale.png",
+        "defaultDialogs": ["Ajude o reino", "Lelele"]
+    }
+]

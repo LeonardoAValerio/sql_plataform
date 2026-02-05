@@ -4,32 +4,306 @@
   "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
   "entities": [
     {
-      "id": "1:3175960776933132131",
-      "lastPropertyId": "3:6096135211401725139",
-      "name": "Config",
+      "id": "1:5973314585981616737",
+      "lastPropertyId": "7:7687897233266483870",
+      "name": "Chapter",
       "properties": [
         {
-          "id": "1:4083353783698309910",
+          "id": "1:4221266939847535234",
           "name": "id",
           "type": 6,
           "flags": 1
         },
         {
-          "id": "2:1485053714912300759",
+          "id": "2:3024027075428428312",
+          "name": "refId",
+          "type": 6,
+          "flags": 40,
+          "indexId": "1:4272032327039726676"
+        },
+        {
+          "id": "3:7909822941811060262",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:4516517381377346705",
+          "name": "backgroundImgPath",
+          "type": 9
+        },
+        {
+          "id": "5:5828808536189333364",
+          "name": "iconImgPath",
+          "type": 9
+        },
+        {
+          "id": "6:1662244797978207885",
+          "name": "defaultDialogs",
+          "type": 30
+        },
+        {
+          "id": "7:7687897233266483870",
+          "name": "characterId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "2:2569115553188492082",
+          "relationTarget": "Character"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:8572854090930341858",
+      "lastPropertyId": "4:4315755590890387020",
+      "name": "Character",
+      "properties": [
+        {
+          "id": "1:5612062901542984706",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:723683309010309965",
+          "name": "refId",
+          "type": 6,
+          "flags": 40,
+          "indexId": "3:4640869521664756704"
+        },
+        {
+          "id": "3:6453527414324211765",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:4315755590890387020",
+          "name": "pathImg",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:8408800768045639856",
+      "lastPropertyId": "3:8717339309125641126",
+      "name": "Config",
+      "properties": [
+        {
+          "id": "1:475070841385780781",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6187491828509691819",
           "name": "username",
           "type": 9
         },
         {
-          "id": "3:6096135211401725139",
+          "id": "3:8717339309125641126",
           "name": "insertedTables",
           "type": 1
         }
       ],
       "relations": []
+    },
+    {
+      "id": "4:3406974681540967323",
+      "lastPropertyId": "4:5798856795710583153",
+      "name": "Dialog",
+      "properties": [
+        {
+          "id": "1:7621568563904688952",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3651909786407415004",
+          "name": "refId",
+          "type": 6,
+          "flags": 40,
+          "indexId": "4:2776218141814564241"
+        },
+        {
+          "id": "3:6055467020363662882",
+          "name": "texts",
+          "type": 30
+        },
+        {
+          "id": "4:5798856795710583153",
+          "name": "characterId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "5:3585966396648816082",
+          "relationTarget": "Character"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "5:4852888588560463239",
+      "lastPropertyId": "6:8838459757260935310",
+      "name": "Faq",
+      "properties": [
+        {
+          "id": "1:3625968654843321966",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:9028145453339080403",
+          "name": "refId",
+          "type": 6,
+          "flags": 40,
+          "indexId": "6:6055474899643521103"
+        },
+        {
+          "id": "3:7828140111856259721",
+          "name": "question",
+          "type": 9
+        },
+        {
+          "id": "4:4337080072963131235",
+          "name": "answer",
+          "type": 9
+        },
+        {
+          "id": "5:4821108454246175467",
+          "name": "embedding",
+          "type": 28,
+          "flags": 8,
+          "indexId": "7:1040314439887357833"
+        },
+        {
+          "id": "6:8838459757260935310",
+          "name": "chapterId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "8:3431805966167694409",
+          "relationTarget": "Chapter"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "6:6658781409194574519",
+      "lastPropertyId": "7:6714547495560024784",
+      "name": "Level",
+      "properties": [
+        {
+          "id": "1:1779490834382340472",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:1869606200134161179",
+          "name": "refId",
+          "type": 6,
+          "flags": 40,
+          "indexId": "9:2634038929821472341"
+        },
+        {
+          "id": "3:500761637304787835",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:1813659786784187015",
+          "name": "position",
+          "type": 6
+        },
+        {
+          "id": "5:2291635270235067726",
+          "name": "dataLevel",
+          "type": 9
+        },
+        {
+          "id": "6:981069108101036886",
+          "name": "isCompleted",
+          "type": 1
+        },
+        {
+          "id": "7:6714547495560024784",
+          "name": "chapterId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "10:2889916965937761177",
+          "relationTarget": "Chapter"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "7:472936416562774771",
+      "lastPropertyId": "5:7683046944203301860",
+      "name": "Question",
+      "properties": [
+        {
+          "id": "1:3906966699697460699",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6130157587554444537",
+          "name": "refId",
+          "type": 6,
+          "flags": 40,
+          "indexId": "11:6103568268844684949"
+        },
+        {
+          "id": "3:1637340321130407071",
+          "name": "description",
+          "type": 9
+        },
+        {
+          "id": "4:1065319458034757365",
+          "name": "dataQuestion",
+          "type": 9
+        },
+        {
+          "id": "5:7683046944203301860",
+          "name": "typeId",
+          "type": 11,
+          "flags": 520,
+          "indexId": "12:362384957612295319",
+          "relationTarget": "TypeQuestion"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "8:1949517125018412760",
+      "lastPropertyId": "3:3255603231274766490",
+      "name": "TypeQuestion",
+      "properties": [
+        {
+          "id": "1:6581646779562970523",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8858650155636454094",
+          "name": "refId",
+          "type": 6,
+          "flags": 40,
+          "indexId": "13:3643538127318295405"
+        },
+        {
+          "id": "3:3255603231274766490",
+          "name": "name",
+          "type": 9
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "1:3175960776933132131",
-  "lastIndexId": "0:0",
+  "lastEntityId": "8:1949517125018412760",
+  "lastIndexId": "13:3643538127318295405",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,

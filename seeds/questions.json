@@ -1,0 +1,32 @@
+[
+    {
+        "refId": 1,
+        "typeQuestionId": 1,
+        "description": "Oque é um Insert?",
+        "dataQuestion": {
+            "options": [
+                { "id": 1, "text": "Ele faz uns bagulhos" },
+                { "id": 2, "text": "Ele farma aura plus ego" },
+                { "id": 3, "text": "Ele insere dados dentro do banco de dados" },
+                { "id": 4, "text": "Sla" }
+            ],
+            "correctOption": 3
+        }
+    },
+    {
+        "refId": 2,
+        "typeQuestionId": 2,
+        "description": "Faça um Insert, que adicione um novo bárbaro chamado 'Cleber' no exercito",
+        "dataQuestion": {
+            "database": "CREATE TABLE exercito ()",
+            "result": {
+                "type": "SELECT",
+                "command": "SELECT * FROM exercito WHERE nome = 'CLEBER'",
+                "result": {
+                    "nome": "Cleber",
+                    "tipo": "Bárbaro"
+                }
+            }
+        }
+    }
+]

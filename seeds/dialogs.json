@@ -1,0 +1,30 @@
+[
+    {
+        "refId": 1,
+        "characterId": 1,
+        "texts": [
+            "Salve $user, de boa? (vc pode clicar na caixa de dialogo pra avancar)",
+            "me falaram q vc eh o cara dos codigos",
+            "eu sou o ▞▞▞▞▞. :P",
+            "vou te acompanhar nessa jornada",
+            "tem uns cara q precisa da sua ajuda, mas pode clicar em mim q eu te ajudo qlqr coisa",
+            "os cara la do clash royale tao me chamando aq no zap e acho q eh o tipo perfeito de problema pra vc resolver",
+            "mas enfim, chega de papo, bora la!"
+        ]
+    },
+    {
+        "refId": 2,
+        "characterId": 1,
+        "texts": [
+            "Primeiro parça, pa tu entender, o bagulho é loco"
+        ]
+    },
+    {
+        "refId": 3,
+        "characterId": 2,
+        "texts": [
+            "Ola vossa senhoria, necessito da sua ajuda para garantir a vitoria de meu reino",
+            "Vários dos meus comparsas estão precisando de alguns auxilios e eu estou focado em outras batalhas"
+        ]
+    }
+]
