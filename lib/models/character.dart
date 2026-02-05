@@ -8,20 +8,22 @@ class Character {
   int refId;
 
   String name;
-  String pathImg;
+  String? defaultImg;
+  String speakingImg;
 
-  Character({required this.refId, required this.name, required this.pathImg});
+  Character({required this.refId, required this.name, this.defaultImg, required this.speakingImg});
 
   factory Character.fromJson(Map<String, dynamic> json) {
     return Character(
       refId: json['refId'], 
       name: json['name'], 
-      pathImg: json['pathImg']
+      defaultImg: json['defaultImg'],
+      speakingImg: json['speakingImg'],
     );
   }
 
   @override
   String toString() {
-    return "Character{refId: $refId, name: $name, pathImg: $pathImg}";
+    return "Character{refId: $refId, name: $name, defaultImg: $defaultImg, speakingImg: $speakingImg}";
   }
 }

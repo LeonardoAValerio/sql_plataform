@@ -1,19 +1,25 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/core/utils/database_seeder.dart';
 import 'package:sql_plataform/views/screens/first_dialog.dart';
 import 'package:sql_plataform/views/screens/hub_screen.dart';
+import 'package:sql_plataform/views/screens/chapter_screen.dart';
 import 'package:sql_plataform/views/screens/home_screen.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
-void main()async {
-  print("Starting application...");
+void main() async {
+  if (kIsWeb || defaultTargetPlatform == TargetPlatform.linux || defaultTargetPlatform == TargetPlatform.windows) {
+    databaseFactory = databaseFactoryFfi;
+  }
   WidgetsFlutterBinding.ensureInitialized();
+  
   await ObjectBoxManager.create();
 
   final seeder = DatabaseSeeder();
   await seeder.clearAll();
   await seeder.seedAll();
-  
+
   runApp(const MyApp());
 }
 

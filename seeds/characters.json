@@ -2,21 +2,19 @@
     {
         "refId": 1,
         "name": "MegaHacker 3000",
-        "pathImg": "/MegaHacker.png"
+        "defaultImg": "MegaHacker.png",
+        "speakingImg": "MegaHacker.png"
     },
     {
         "refId": 2,
         "name": "Rei",
-        "pathImg": "/rei.png"
+        "defaultImg": "clash_king_default.png",
+        "speakingImg": "clash_king_speaking.png"
     },
     {
         "refId": 3,
         "name": "Princesa",
-        "pathImg": "/princesa.png"
-    },
-    {
-        "refId": 4,
-        "name": "Gamer",
-        "pathImg": "/gamer.png"
+        "defaultImg": "princesa.png",
+        "speakingImg": "princesa.png"
     }
 ] 

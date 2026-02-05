@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/models/config.dart';
 import 'package:sql_plataform/views/screens/first_dialog.dart';
+import 'package:sql_plataform/views/screens/chapter_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
