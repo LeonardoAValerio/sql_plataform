@@ -49,6 +49,10 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/background.png
+    - assets/images/hacker.png
+    - assets/images/hacker_textbox.png
+    - assets/images/crown_cr.png
+    - assets/images/unknown_phase.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

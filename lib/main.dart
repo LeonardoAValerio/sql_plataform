@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/core/utils/database_seeder.dart';
 import 'package:sql_plataform/views/screens/first_dialog.dart';
+import 'package:sql_plataform/views/screens/hub_screen.dart';
 import 'package:sql_plataform/views/screens/home_screen.dart';
 
 void main()async {
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: FirstDialogScreen()
+      home: const MyHomePage(title: 'SQL Platform Demo'),
     );
   }
 }

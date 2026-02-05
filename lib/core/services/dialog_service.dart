@@ -28,7 +28,7 @@ class DialogService {
 		);
 	}
 
-	static List<String>? getDialogTexts(int dialogRefId) {
+	static List<String>? getDialogTexts(int dialogRefId){
 		final dialog = getDialogWithUsername(dialogRefId);
 		return dialog?.texts;
 	}
