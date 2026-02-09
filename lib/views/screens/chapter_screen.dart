@@ -44,23 +44,26 @@ class ChapterScreen extends StatelessWidget {
             fit: BoxFit.cover
           )
         ),
-        child: Center(
-          child: Column(
-            children: [
-              SizedBox(height: 32),
-              Image(image: AssetImage(pathImg(character.defaultImg!))),
-              SizedBox(height: 32),
-              SizedBox(
-                width: 300,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 16.0,
-                  children: <Widget>[
-                    ..._buildLevelCards(levels)
-                  ],
-                )
-              ),
-            ],
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                SizedBox(height: 32),
+                Image(image: AssetImage(pathImg(character.defaultImg!))),
+                SizedBox(height: 32),
+                SizedBox(
+                  width: 300,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 16.0,
+                    children: <Widget>[
+                      ..._buildLevelCards(levels)
+                    ],
+                  ),
+                ),
+                SizedBox(height: 32), // espaçamento no final
+              ],
+            ),
           ),
         ),
       ),
