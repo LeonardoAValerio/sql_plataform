@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sql_plataform/views/screens/chapter_screen.dart';
 
 class HubScreen extends StatelessWidget {
   const HubScreen({super.key});
@@ -6,18 +7,18 @@ class HubScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(children: [_buildBackground(), _buildContent()]),
+      body: Stack(children: [_buildBackground(), _buildContent(context)]),
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildContent(BuildContext context) {
     return Column(
       children: [
         const SizedBox(height: 80),
         _buildHacker(),
 
         const SizedBox(height: 60),
-        _buildButtons(),
+        _buildButtons(context),
       ],
     );
   }
@@ -36,7 +37,7 @@ class HubScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildButtons() {
+  Widget _buildButtons(BuildContext context) {
     return Column(
       children: [
         Row(
@@ -46,8 +47,12 @@ class HubScreen extends StatelessWidget {
               image: 'assets/images/crown_cr.png',
               enabled: true,
               onTap: () {
-                //aq manda pra fase 1 (mt fodaaaaa)
-                debugPrint('fase 1');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChapterScreen(1),
+                  ),
+                );
               },
             ),
             const SizedBox(width: 20),

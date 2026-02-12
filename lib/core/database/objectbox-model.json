@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:5973314585981616737",
-      "lastPropertyId": "7:7687897233266483870",
+      "lastPropertyId": "8:2426882119597558274",
       "name": "Chapter",
       "properties": [
         {
@@ -48,6 +48,11 @@
           "flags": 520,
           "indexId": "2:2569115553188492082",
           "relationTarget": "Character"
+        },
+        {
+          "id": "8:2426882119597558274",
+          "name": "color",
+          "type": 6
         }
       ],
       "relations": []

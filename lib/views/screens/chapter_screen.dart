@@ -2,50 +2,81 @@ import 'package:flutter/material.dart';
 import 'package:sql_plataform/core/database/objectbox.g.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/core/utils/path.dart';
+import 'package:sql_plataform/models/chapter.dart';
 import 'package:sql_plataform/models/level.dart';
 import 'package:sql_plataform/views/widgets/chapter/level_card.dart';
 
-class ChapterScreen extends StatelessWidget {
-  final int chapterId; 
-  
+class ChapterScreen extends StatefulWidget {
+  final int chapterId;
+
   ChapterScreen(this.chapterId);
 
   @override
-  Widget build(BuildContext context) {
-    final chapter = ObjectBoxManager.chapterBox.query(Chapter_.refId.equals(chapterId)).build().findFirst();
-    if(chapter == null) {
+  State<ChapterScreen> createState() => _ChapterScreenState();
+}
+
+class _ChapterScreenState extends State<ChapterScreen> {
+  late Chapter chapter;
+  late List<Level> levels;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  void _loadData() {
+    final loadedChapter = ObjectBoxManager.chapterBox
+        .query(Chapter_.refId.equals(widget.chapterId))
+        .build()
+        .findFirst();
+
+    if (loadedChapter == null) {
       throw ArgumentError("Not found ChapterId");
     }
 
-    final character = chapter.character.target;
-    if(character == null) {
+    if (loadedChapter.character.target == null) {
       throw ArgumentError("Not found Character in Chapter");
     }
 
-    final levels = ObjectBoxManager.levelBox.query(Level_.chapter.equals(chapter.id)).build().find();
-    levels.sort((a, b) => a.refId.compareTo(b.refId));
+    final loadedLevels = ObjectBoxManager.levelBox
+        .query(Level_.chapter.equals(loadedChapter.id))
+        .build()
+        .find();
+    
+    loadedLevels.sort((a, b) => a.refId.compareTo(b.refId));
 
-    if(levels.isEmpty) {
+    if (loadedLevels.isEmpty) {
       throw ArgumentError("Chapter Not found Levels");
     }
+
+    setState(() {
+      chapter = loadedChapter;
+      levels = loadedLevels;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final character = chapter.character.target!;
 
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         iconTheme: IconThemeData(
-          color: Colors.white, // ou a cor que você quiser para a seta
+          color: Colors.white,
         ),
       ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(pathImg(chapter.backgroundImgPath)),
-            fit: BoxFit.cover
-          )
+            fit: BoxFit.cover,
+          ),
         ),
-        child: SingleChildScrollView(
-          child: Center(
+        child: Center(
+          child: SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(height: 32),
@@ -57,11 +88,11 @@ class ChapterScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     spacing: 16.0,
                     children: <Widget>[
-                      ..._buildLevelCards(levels)
+                      ..._buildLevelCards(levels),
                     ],
                   ),
                 ),
-                SizedBox(height: 32), // espaçamento no final
+                SizedBox(height: 32),
               ],
             ),
           ),
@@ -70,17 +101,24 @@ class ChapterScreen extends StatelessWidget {
     );
   }
 
-  List<LevelCard> _buildLevelCards(List<Level> levels) {    
-    final lastCompleted = levels.lastIndexWhere((element) => element.isCompleted);
-    final index = lastCompleted != -1 ? lastCompleted + 1 : 0;
-    final lastOpened = levels[index];
+  List<LevelCard> _buildLevelCards(List<Level> levels) {
+    final lastCompletedIndex = levels.lastIndexWhere((element) => element.isCompleted);
+    final nextLevelIndex = lastCompletedIndex + 1;
 
-    return levels.map(
-      (e) => LevelCard(
-        level: e.name, 
-        refIdLevel: e.refId, 
-        isCompleted: e.isCompleted, 
-        isAble: e.isCompleted || e == lastOpened))
-      .toList();
+    return levels.asMap().entries.map((entry) {
+      final index = entry.key;
+      final level = entry.value;
+
+      final isAble = level.isCompleted || 
+                    (index == nextLevelIndex && index < levels.length);
+
+      return LevelCard(
+        level: level.name,
+        refIdLevel: level.refId,
+        isCompleted: level.isCompleted,
+        isAble: isAble,
+        onLevelCompleted: _loadData,
+      );
+    }).toList();
   }
 }

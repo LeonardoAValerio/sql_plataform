@@ -10,11 +10,11 @@
                 "refId": 3
             },
             { 
-                "type": "question",
+                "type": "objective",
                 "refId": 1
             },
             { 
-                "type": "question",
+                "type": "essay",
                 "refId": 2
             }
         ]
@@ -30,11 +30,11 @@
                 "refId": 3
             },
             { 
-                "type": "question",
+                "type": "objective",
                 "refId": 1
             },
             { 
-                "type": "question",
+                "type": "essay",
                 "refId": 2
             }
         ]
@@ -50,11 +50,11 @@
                 "refId": 3
             },
             { 
-                "type": "question",
+                "type": "objective",
                 "refId": 1
             },
             { 
-                "type": "question",
+                "type": "essay",
                 "refId": 2
             }
         ]
@@ -70,11 +70,11 @@
                 "refId": 3
             },
             { 
-                "type": "question",
+                "type": "objective",
                 "refId": 1
             },
             { 
-                "type": "question",
+                "type": "essay",
                 "refId": 2
             }
         ]

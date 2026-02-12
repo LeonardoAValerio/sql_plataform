@@ -29,7 +29,7 @@ final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
       id: const obx_int.IdUid(1, 5973314585981616737),
       name: 'Chapter',
-      lastPropertyId: const obx_int.IdUid(7, 7687897233266483870),
+      lastPropertyId: const obx_int.IdUid(8, 2426882119597558274),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
@@ -69,7 +69,12 @@ final _entities = <obx_int.ModelEntity>[
             type: 11,
             flags: 520,
             indexId: const obx_int.IdUid(2, 2569115553188492082),
-            relationTarget: 'Character')
+            relationTarget: 'Character'),
+        obx_int.ModelProperty(
+            id: const obx_int.IdUid(8, 2426882119597558274),
+            name: 'color',
+            type: 6,
+            flags: 0)
       ],
       relations: <obx_int.ModelRelation>[],
       backlinks: <obx_int.ModelBacklink>[]),
@@ -385,7 +390,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
           final defaultDialogsOffset = fbb.writeList(object.defaultDialogs
               .map(fbb.writeString)
               .toList(growable: false));
-          fbb.startTable(8);
+          fbb.startTable(9);
           fbb.addInt64(0, object.id);
           fbb.addInt64(1, object.refId);
           fbb.addOffset(2, nameOffset);
@@ -393,6 +398,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
           fbb.addOffset(4, iconImgPathOffset);
           fbb.addOffset(5, defaultDialogsOffset);
           fbb.addInt64(6, object.character.targetId);
+          fbb.addInt64(7, object.color);
           fbb.finish(fbb.endTable());
           return object.id;
         },
@@ -413,12 +419,15 @@ obx_int.ModelDefinition getObjectBoxModel() {
                   fb.StringReader(asciiOptimization: true),
                   lazy: false)
               .vTableGet(buffer, rootOffset, 14, []);
+          final colorParam =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 18, 0);
           final object = Chapter(
               refId: refIdParam,
               name: nameParam,
               backgroundImgPath: backgroundImgPathParam,
               iconImgPath: iconImgPathParam,
-              defaultDialogs: defaultDialogsParam)
+              defaultDialogs: defaultDialogsParam,
+              color: colorParam)
             ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
           object.character.targetId =
               const fb.Int64Reader().vTableGet(buffer, rootOffset, 16, 0);
@@ -729,6 +738,10 @@ class Chapter_ {
   /// See [Chapter.character].
   static final character =
       obx.QueryRelationToOne<Chapter, Character>(_entities[0].properties[6]);
+
+  /// See [Chapter.color].
+  static final color =
+      obx.QueryIntegerProperty<Chapter>(_entities[0].properties[7]);
 }
 
 /// [Character] entity fields to define ObjectBox queries.

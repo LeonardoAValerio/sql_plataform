@@ -5,6 +5,7 @@
         "name": "Clash Royale",
         "backgroundImgPath": "clash_background.png",
         "iconImgPath": "icon_clash_royale.png",
+        "color": "2B5F9A",
         "defaultDialogs": ["Ajude o reino", "Lelele"]
     }
 ]

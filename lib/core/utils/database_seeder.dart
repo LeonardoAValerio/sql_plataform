@@ -284,6 +284,7 @@ class DatabaseSeeder {
     ObjectBoxManager.chapterBox.removeAll();
     ObjectBoxManager.levelBox.removeAll();
     ObjectBoxManager.faqBox.removeAll();
+    ObjectBoxManager.configBox.removeAll();
     logger("All data cleared");
   }
 }
