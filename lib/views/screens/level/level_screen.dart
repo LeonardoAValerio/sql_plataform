@@ -33,6 +33,8 @@ class LevelScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text(level.name),
           backgroundColor: Color(chapter.color),
+          foregroundColor: Colors.white,
+          centerTitle: true,
         ),
         body: Container(
           decoration: BoxDecoration(

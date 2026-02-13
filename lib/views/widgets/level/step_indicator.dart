@@ -24,8 +24,8 @@ class StepIndicator extends StatelessWidget {
             width: 20,
             decoration: BoxDecoration(
               color: isActive
-                  ? Theme.of(context).primaryColor
-                  : Colors.grey.shade300,
+                  ? Colors.white
+                  : Colors.grey.shade500,
               borderRadius: BorderRadius.circular(1.5),
             ),
           );

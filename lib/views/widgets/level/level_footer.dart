@@ -10,6 +10,7 @@ class LevelFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<LevelViewModel>();
+    final chapter = viewModel.level.chapter.target!;
 
     return Container(
       padding: EdgeInsets.all(16),
@@ -21,6 +22,7 @@ class LevelFooter extends StatelessWidget {
           _CircularNavigationButton(
             icon: Icons.arrow_back_ios_new,
             onPressed: viewModel.isFirstStep ? null : viewModel.previousStep,
+            backgroundColor: Color(chapter.color)
           ),
           
           // Indicador
@@ -32,6 +34,7 @@ class LevelFooter extends StatelessWidget {
           // Botão circular direita
           _CircularNavigationButton(
             icon: viewModel.isLastStep ? Icons.check : Icons.arrow_forward_ios,
+            backgroundColor: Color(chapter.color),
             onPressed: viewModel.canProceed()
                 ? () {
                     if (viewModel.isLastStep) {
@@ -62,26 +65,30 @@ class LevelFooter extends StatelessWidget {
 class _CircularNavigationButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback? onPressed;
+  final Color backgroundColor;
 
   const _CircularNavigationButton({
     required this.icon,
     required this.onPressed,
+    required this.backgroundColor
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 32,
+      height: 32,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: onPressed != null
-            ? Theme.of(context).primaryColor
+            ? Colors.white
             : Colors.grey.shade300,
       ),
       child: IconButton(
         onPressed: onPressed,
         icon: Icon(icon),
-        color: Colors.white,
-        iconSize: 20,
+        color: backgroundColor,
+        iconSize: 16,
       ),
     );
   }
