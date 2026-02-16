@@ -10,11 +10,71 @@
                 "refId": 3
             },
             { 
-                "type": "question",
+                "type": "objective",
                 "refId": 1
             },
             { 
-                "type": "question",
+                "type": "essay",
+                "refId": 2
+            }
+        ]
+    },
+    {
+        "refId": 2,
+        "name": "A magia desconhecida",
+        "chapterId": 1,
+        "position": 1,
+        "dataLevel": [
+            { 
+                "type": "dialog",
+                "refId": 3
+            },
+            { 
+                "type": "objective",
+                "refId": 1
+            },
+            { 
+                "type": "essay",
+                "refId": 2
+            }
+        ]
+    },
+    {
+        "refId": 3,
+        "name": "A Fúria do Bárbaro",
+        "chapterId": 1,
+        "position": 1,
+        "dataLevel": [
+            { 
+                "type": "dialog",
+                "refId": 3
+            },
+            { 
+                "type": "objective",
+                "refId": 1
+            },
+            { 
+                "type": "essay",
+                "refId": 2
+            }
+        ]
+    },
+    {
+        "refId": 4,
+        "name": "O rush na ponte",
+        "chapterId": 1,
+        "position": 1,
+        "dataLevel": [
+            { 
+                "type": "dialog",
+                "refId": 3
+            },
+            { 
+                "type": "objective",
+                "refId": 1
+            },
+            { 
+                "type": "essay",
                 "refId": 2
             }
         ]

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:objectbox/objectbox.dart';
 import 'package:sql_plataform/models/character.dart';
 
@@ -11,6 +12,7 @@ class Chapter {
   String name;
   String backgroundImgPath;
   String iconImgPath;
+  int color;
   List<String> defaultDialogs;
 
   final character = ToOne<Character>();
@@ -21,6 +23,7 @@ class Chapter {
     required this.backgroundImgPath,
     required this.iconImgPath,
     required this.defaultDialogs,
+    required this.color,
   });
 
   factory Chapter.fromJson(Map<String, dynamic> json) {
@@ -32,7 +35,8 @@ class Chapter {
       name: json['name'], 
       backgroundImgPath: json['backgroundImgPath'], 
       iconImgPath: json['iconImgPath'],
-      defaultDialogs: defaultDialogs
+      defaultDialogs: defaultDialogs,
+      color: int.parse("0xFF${json['color']}")
     );
   }
 

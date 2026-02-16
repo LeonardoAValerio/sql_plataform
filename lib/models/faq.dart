@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:objectbox/objectbox.dart';
 import 'package:sql_plataform/models/chapter.dart';
 

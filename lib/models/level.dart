@@ -33,8 +33,30 @@ class Level {
     );
   }
 
+  List<LevelStep> get levelSteps {
+    final parsedData = jsonDecode(dataLevel) as List<dynamic>;
+
+    return parsedData
+        .map((e) => LevelStep.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
   @override
   String toString() {
     return "Level{refId: $refId, name: $name, position: $position, dataLevel: $dataLevel, isCompleted: $isCompleted}";
+  }
+}
+
+class LevelStep {
+  int refId;
+  String type;
+
+  LevelStep({required this.refId, required this.type});
+
+  factory LevelStep.fromJson(Map<String, dynamic> json) {
+    return LevelStep(
+      refId: json['refId'],
+      type: json['type'],
+    );
   }
 }
