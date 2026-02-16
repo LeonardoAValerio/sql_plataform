@@ -5,6 +5,7 @@ import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/core/utils/path.dart';
 import 'package:sql_plataform/models/level.dart';
 import 'package:sql_plataform/viewmodels/level_viewmodel.dart';
+import 'package:sql_plataform/views/screens/level/container/essay_question_container.dart';
 import 'package:sql_plataform/views/widgets/level/level_footer.dart';
 import 'package:sql_plataform/views/widgets/level/step_indicator.dart';
 
@@ -74,7 +75,7 @@ class LevelScreen extends StatelessWidget {
         return Text("${step.type} - ${step.refId}");
         
       case "essay":
-        return Text("${step.type} - ${step.refId}");
+        return EssayQuestionContainer(refId: step.refId);
 
       default:
         return Text("Algo deu errado! Não existe este tipo de interface!");
