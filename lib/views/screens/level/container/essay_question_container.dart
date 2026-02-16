@@ -1,7 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sql_plataform/core/database/objectbox.g.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/core/theme/app_colors.dart';
+import 'package:sql_plataform/models/question.dart';
+import 'package:sql_plataform/services/sql/sql_question_evaluator.dart';
+import 'package:sql_plataform/services/sql/sql_question_executor.dart';
+import 'package:sql_plataform/services/sql/sql_question_manager.dart';
+import 'package:sql_plataform/viewmodels/level_viewmodel.dart';
+import 'package:sql_plataform/views/widgets/common/app_markdown.dart';
 
 class EssayQuestionContainer extends StatefulWidget {
   final int refId;
@@ -13,26 +22,59 @@ class EssayQuestionContainer extends StatefulWidget {
 }
 
 class _EssayQuestionContainerState extends State<EssayQuestionContainer> {
-  bool isInverted = false;
+  bool _isInverted = false;
+  String _result = "";
+  final TextEditingController _responseController = TextEditingController();
+  late SQLQuestionManager _sqlQuestionManager;
+  late Question _question;
 
   void toggleLayout() {
     setState(() {
-      isInverted = !isInverted;
+      _isInverted = !_isInverted;
     });
+  }
+
+  Future<void> executeSQL() async {
+    final evaluator = SQLQuestionEvaluator(manager: _sqlQuestionManager, questionData: jsonDecode(_question.dataQuestion));
+    final result = await evaluator.evaluate(_responseController.text);
+
+    setState(() {
+      _result = result.errorMessage == null ? jsonEncode(result.userResult) : result.errorMessage!;
+    });
+
+    final viewModel = Provider.of<LevelViewModel>(context, listen: false);
+    viewModel.markStepAsCompleted(widget.refId, result.isCorrect);
+  }
+
+  @override
+  void dispose() {
+    _responseController.dispose();
+    _sqlQuestionManager.close();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _question = ObjectBoxManager.questionBox
+        .query(Question_.refId.equals(widget.refId))
+        .build()
+        .findFirst()!;
+
+    _initializeData();
+  }
+
+  Future<void> _initializeData() async {
+    _sqlQuestionManager = SQLQuestionManager(refIdQuestion: widget.refId);
+    await _sqlQuestionManager.init();
+    
+    setState(() {}); // Atualiza a UI quando os dados estiverem prontos
   }
 
   @override
   Widget build(BuildContext context) {
-    final question = ObjectBoxManager.questionBox
-        .query(Question_.refId.equals(widget.refId))
-        .build()
-        .findFirst();
-
-    if (question == null) {
-      throw ArgumentError("Invalid refId Question: ${widget.refId}");
-    }
-
-    final type = question.type.target!.name;
+    
+    final type = _question.type.target!.name;
 
     if (type != "essayQuestion") {
       throw ArgumentError("Invalid $type. Needs to be = 'essayQuestion'");
@@ -42,28 +84,23 @@ class _EssayQuestionContainerState extends State<EssayQuestionContainer> {
       padding: const EdgeInsets.all(16),
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.mediumBrown,
-          borderRadius: BorderRadius.circular(3),
+          color: AppColors.lightBrown,
+          borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
           children: [
-            // Header com descrição da questão
             Padding(
               padding: const EdgeInsets.all(16),
-              child: Text(
-                question.description,
-                style: const TextStyle(color: Colors.black),
-                textAlign: TextAlign.center,
-              ),
+              child: AppMarkdown(
+                data: _question.description 
+              )
             ),
 
-            // Container principal com os dois painéis em coluna
             Expanded(
               child: Column(
                 children: [
-                  // Painel Superior (Solução)
                   Flexible(
-                    flex: isInverted ? 4 : 6, // 40% ou 60%
+                    flex: _isInverted ? 4 : 6,
                     child: Container(
                       width: double.infinity,
                       decoration: const BoxDecoration(
@@ -77,9 +114,8 @@ class _EssayQuestionContainerState extends State<EssayQuestionContainer> {
                     ),
                   ),
 
-                  // Painel Inferior (Resultado)
                   Flexible(
-                    flex: isInverted ? 6 : 4, // 60% ou 40%
+                    flex: _isInverted ? 6 : 4,
                     child: Container(
                       width: double.infinity,
                       decoration: const BoxDecoration(
@@ -89,9 +125,7 @@ class _EssayQuestionContainerState extends State<EssayQuestionContainer> {
                           bottomRight: Radius.circular(8),
                         ),
                       ),
-                      child: _buildResultArea(
-                        "Sucesso:\nexample text\n<stdio.io>\ntabela penis retornou\nasdgfd\nxcvxcvxcbxcb\n  xcbxcbxcb\n  xcbxcbxcbbdfb\nreturn 1",
-                      ),
+                      child: _buildResultArea(),
                     ),
                   ),
                 ],
@@ -109,7 +143,7 @@ class _EssayQuestionContainerState extends State<EssayQuestionContainer> {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: Colors.blueGrey[700],
+            color: AppColors.gray,
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(8),
               topRight: Radius.circular(8),
@@ -118,43 +152,47 @@ class _EssayQuestionContainerState extends State<EssayQuestionContainer> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
                   "Solução:",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
                   ),
                 ),
+                const Spacer(),
                 IconButton(
                   icon: const Icon(Icons.play_circle_filled),
-                  color: Colors.white,
+                  color: Colors.black,
                   iconSize: 28,
                   padding: EdgeInsets.zero,
                   constraints: const BoxConstraints(),
                   onPressed: () {
-                    // Ação de executar
+                    executeSQL();
                   },
                 ),
               ],
             ),
           ),
         ),
+        
         Expanded(
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            child: SingleChildScrollView(
-              child: RichText(
-                text: const TextSpan(
-                  style: TextStyle(
-                    fontFamily: 'monospace',
-                    fontSize: 14,
-                    color: Colors.black,
-                  ),
-                  text: "Teste",
-                ),
+          child: Padding(
+            padding: const EdgeInsets.all(4),
+            child: TextField(
+              controller: _responseController,
+              maxLines: null,
+              expands: true,
+              textAlignVertical: TextAlignVertical.top,
+              style: const TextStyle(
+                fontFamily: "monospace",
+                fontSize: 14,
+              ),
+              decoration: InputDecoration(
+                fillColor: Colors.grey[50],
+                contentPadding: const EdgeInsets.all(12),
+                hintText: 'Digite seu código SQL aqui...',
               ),
             ),
           ),
@@ -163,8 +201,7 @@ class _EssayQuestionContainerState extends State<EssayQuestionContainer> {
     );
   }
 
-  // Widget reutilizável para área de resultado
-  Widget _buildResultArea(String content) {
+  Widget _buildResultArea() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -181,12 +218,16 @@ class _EssayQuestionContainerState extends State<EssayQuestionContainer> {
                   "Resultado:",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 13,
+                    fontSize: 14,
                   ),
                 ),
                 IconButton(
-                  icon: Icon(Icons.keyboard_arrow_down, size: 20, color: Colors.grey[700]),
+                  icon: Icon(_isInverted ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_up),
                   onPressed: toggleLayout,
+                  iconSize: 28,
+                  constraints: const BoxConstraints(),
+                  padding: EdgeInsets.zero,
+                  color: Colors.black,
                 ),
               ],
             ),
@@ -196,14 +237,9 @@ class _EssayQuestionContainerState extends State<EssayQuestionContainer> {
           child: Container(
             padding: const EdgeInsets.all(12),
             child: SingleChildScrollView(
-              child: Text(
-                content,
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontFamily: 'monospace',
-                  color: Colors.black,
-                ),
-              ),
+              child: AppMarkdown(
+                data: _result
+              )
             ),
           ),
         ),

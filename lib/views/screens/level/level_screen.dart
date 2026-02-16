@@ -75,7 +75,10 @@ class LevelScreen extends StatelessWidget {
         return Text("${step.type} - ${step.refId}");
         
       case "essay":
-        return EssayQuestionContainer(refId: step.refId);
+        return EssayQuestionContainer(
+          key: ValueKey(step.refId),
+          refId: step.refId
+        );
 
       default:
         return Text("Algo deu errado! Não existe este tipo de interface!");
