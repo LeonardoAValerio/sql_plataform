@@ -117,7 +117,7 @@ class _HubScreenState extends State<HubScreen> {
 
             _buildStageButton(
               image: chapter1Completed
-                  ? 'assets/images/crown_cr.png'
+                  ? 'assets/images/pokeball.png'
                   : 'assets/images/unknown_phase.png',
               enabled: chapter1Completed,
               onTap: chapter1Completed
@@ -143,7 +143,7 @@ class _HubScreenState extends State<HubScreen> {
           children: [
             _buildStageButton(
               image: chapter2Completed
-                  ? 'assets/images/crown_cr.png'
+                  ? 'assets/images/mine_icon.png'
                   : 'assets/images/unknown_phase.png',
               enabled: chapter2Completed,
               onTap: chapter2Completed
@@ -164,7 +164,7 @@ class _HubScreenState extends State<HubScreen> {
 
             _buildStageButton(
               image: chapter3Completed
-                  ? 'assets/images/crown_cr.png'
+                  ? 'assets/images/lol_icon.png'
                   : 'assets/images/unknown_phase.png',
               enabled: chapter3Completed,
               onTap: chapter3Completed
