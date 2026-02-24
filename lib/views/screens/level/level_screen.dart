@@ -7,7 +7,6 @@ import 'package:sql_plataform/models/level.dart';
 import 'package:sql_plataform/viewmodels/level_viewmodel.dart';
 import 'package:sql_plataform/views/screens/level/container/essay_question_container.dart';
 import 'package:sql_plataform/views/widgets/level/level_footer.dart';
-import 'package:sql_plataform/views/widgets/level/step_indicator.dart';
 
 class LevelScreen extends StatelessWidget {
   final int refId;

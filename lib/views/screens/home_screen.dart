@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/models/config.dart';
 import 'package:sql_plataform/views/screens/first_dialog.dart';
-import 'package:sql_plataform/views/screens/chapter_screen.dart';
+import 'package:sql_plataform/views/screens/hub_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -15,7 +15,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _usernameController = TextEditingController();
-
   Future<void> _createUsernameConfig(String username) async {
     ObjectBoxManager.configBox.put(
       Config(username: username),
@@ -24,7 +23,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    List<Config> configs = ObjectBoxManager.configBox.getAll();
+
+    return configs.length == 0 ? 
+    Scaffold(
       body: Stack(
         children: [
           Container(
@@ -101,6 +103,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-    );
+    ) : HubScreen();
   }
 }

@@ -5,7 +5,9 @@ import 'package:provider/provider.dart';
 import 'package:sql_plataform/core/database/objectbox.g.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/core/theme/app_colors.dart';
+import 'package:sql_plataform/core/utils/json_to_md.dart';
 import 'package:sql_plataform/models/question.dart';
+import 'package:sql_plataform/services/sql/sql_evaluation_result.dart';
 import 'package:sql_plataform/services/sql/sql_question_evaluator.dart';
 import 'package:sql_plataform/services/sql/sql_question_manager.dart';
 import 'package:sql_plataform/viewmodels/level_viewmodel.dart';
@@ -39,7 +41,13 @@ class _EssayQuestionContainerState extends State<EssayQuestionContainer> {
     final result = await evaluator.evaluate(_responseController.text);
 
     setState(() {
-      _result = result.errorMessage == null ? jsonEncode(result.userResult) : result.errorMessage!;
+      if(result.errorMessage == null) {
+        _result = "**Sucesso:**\n${JsonToMd.transform(result.userResult!)}\n\n Agora passe para a próxima etapa!";
+      } else if(result.typeError == TypeErrorEvaluationResult.QuestionEvaluation) {
+        _result = "**Resultado inválido:**\nSeu SQL não trouxe o resultado esperado\n\n **Erro:** ${result.errorMessage} \n\n **Resultado:** \n${JsonToMd.transform(result.userResult!)}";
+      } else {
+        _result = "**Erro: Seu SQL criado foi inválido e gerou o erro ->** ${result.errorMessage}";
+      }
     });
 
     final viewModel = Provider.of<LevelViewModel>(context, listen: false);
