@@ -7,10 +7,10 @@ import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/core/theme/app_colors.dart';
 import 'package:sql_plataform/models/question.dart';
 import 'package:sql_plataform/services/sql/sql_question_evaluator.dart';
-import 'package:sql_plataform/services/sql/sql_question_executor.dart';
 import 'package:sql_plataform/services/sql/sql_question_manager.dart';
 import 'package:sql_plataform/viewmodels/level_viewmodel.dart';
 import 'package:sql_plataform/views/widgets/common/app_markdown.dart';
+import 'package:sql_plataform/views/widgets/level/sql_highlight_controller.dart';
 
 class EssayQuestionContainer extends StatefulWidget {
   final int refId;
@@ -24,7 +24,7 @@ class EssayQuestionContainer extends StatefulWidget {
 class _EssayQuestionContainerState extends State<EssayQuestionContainer> {
   bool _isInverted = false;
   String _result = "";
-  final TextEditingController _responseController = TextEditingController();
+  final _responseController = SqlHighlightController();
   late SQLQuestionManager _sqlQuestionManager;
   late Question _question;
 
