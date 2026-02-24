@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sql_plataform/core/services/dialog_service.dart';
+import 'package:sql_plataform/services/dialog_service.dart';
 import 'package:sql_plataform/views/screens/hub_screen.dart';
 
 class FirstDialogScreen extends StatefulWidget {
