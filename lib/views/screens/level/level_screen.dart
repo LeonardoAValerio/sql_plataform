@@ -5,6 +5,7 @@ import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/core/utils/path.dart';
 import 'package:sql_plataform/models/level.dart';
 import 'package:sql_plataform/viewmodels/level_viewmodel.dart';
+import 'package:sql_plataform/views/screens/level/container/dialog_container.dart';
 import 'package:sql_plataform/views/screens/level/container/essay_question_container.dart';
 import 'package:sql_plataform/views/widgets/level/level_footer.dart';
 
@@ -68,7 +69,10 @@ class LevelScreen extends StatelessWidget {
    Widget _buildContentByType(LevelStep step, LevelViewModel viewModel) {
     switch (step.type) {
       case "dialog":
-        return Text("${step.type} - ${step.refId}");
+        return DialogQuestionContainer(
+          key: ValueKey(step.refId),
+          refId: step.refId,
+        );
         
       case "objective":
         return Text("${step.type} - ${step.refId}");
