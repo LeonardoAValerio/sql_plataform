@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:sql_plataform/core/database/objectbox.g.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
 import 'package:sql_plataform/core/utils/path.dart';
-import 'package:sql_plataform/viewmodels/level_viewmodel.dart';
 import 'package:sql_plataform/views/widgets/common/app_dialog.dart';
 
-class DialogQuestionContainer extends StatelessWidget {
+class DialogContainer extends StatelessWidget {
   int refId;
 
-  DialogQuestionContainer({ required this.refId, Key? key }): super(key: key);
+  DialogContainer({ required this.refId, super.key });
   
   @override
   Widget build(BuildContext context) {

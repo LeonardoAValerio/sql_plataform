@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:sql_plataform/viewmodels/level_viewmodel.dart';
 import 'package:sql_plataform/views/widgets/common/circular_navigation_button.dart';
 
 class AppDialog extends StatefulWidget {

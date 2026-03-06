@@ -69,7 +69,7 @@ class LevelScreen extends StatelessWidget {
    Widget _buildContentByType(LevelStep step, LevelViewModel viewModel) {
     switch (step.type) {
       case "dialog":
-        return DialogQuestionContainer(
+        return DialogContainer(
           key: ValueKey(step.refId),
           refId: step.refId,
         );
