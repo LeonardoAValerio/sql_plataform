@@ -58,6 +58,9 @@ flutter:
     - assets/images/hacker_textbox.png
     - assets/images/crown_cr.png
     - assets/images/unknown_phase.png
+    - assets/images/lol_icon.png
+    - assets/images/mine_icon.png
+    - assets/images/pokeball.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
