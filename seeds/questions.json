@@ -16,7 +16,7 @@
     {
         "refId": 2,
         "typeQuestionId": 2,
-        "description": "Faça um SELECT que encontre todas as informações do bárbaro dentro da tabela 'exercito' com o *nome* 'Cleber'",
+        "description": "Faça um SELECT que encontre todas as informações do bárbaro dentro da tabela *exercito* com o **nome** *Cleber*",
         "dataQuestion": {
             "databaseQuery": "CREATE TABLE exercito (\n id INTEGER PRIMARY KEY AUTOINCREMENT,\n nome VARCHAR(100) NOT NULL,\n tipo VARCHAR(50) NOT NULL\n);",
             "insertCommand": "INSERT INTO exercito (nome, tipo) VALUES ('Cleber', 'Bárbaro'), ('José', 'Bárbaro');",

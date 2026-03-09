@@ -16,6 +16,10 @@
             { 
                 "type": "essay",
                 "refId": 2
+            },
+            { 
+                "type": "essay",
+                "refId": 3
             }
         ]
     },
@@ -35,7 +39,7 @@
             },
             { 
                 "type": "essay",
-                "refId": 2
+                "refId": 3
             }
         ]
     },
