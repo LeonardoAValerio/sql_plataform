@@ -8,6 +8,7 @@ import 'package:sql_plataform/viewmodels/level_viewmodel.dart';
 import 'package:sql_plataform/views/screens/level/container/essay_question_container.dart';
 import 'package:sql_plataform/views/widgets/level/level_footer.dart';
 import 'package:sql_plataform/views/widgets/level/step_indicator.dart';
+import 'package:sql_plataform/views/screens/level/container/objective_question_container.dart';
 
 class LevelScreen extends StatelessWidget {
   final int refId;
@@ -72,7 +73,10 @@ class LevelScreen extends StatelessWidget {
         return Text("${step.type} - ${step.refId}");
         
       case "objective":
-        return Text("${step.type} - ${step.refId}");
+        return ObjectiveQuestionContainer(
+          key: ValueKey(step.refId),
+          refId: step.refId
+        );
         
       case "essay":
         return EssayQuestionContainer(

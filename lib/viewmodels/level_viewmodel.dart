@@ -60,17 +60,18 @@ class LevelViewModel extends ChangeNotifier {
   }
 
   bool canProceed() {
-    final currentStepRefId = currentStep.refId;
-    
-    switch (currentStep.type) {
-      case "dialog":
-        return true; // Sempre pode prosseguir
-      case "objective":
-        return true;
-      case "essay":
-        return isStepCompleted(currentStepRefId);
-      default:
-        throw ArgumentError("Invalid type step: ${currentStep.type}");
-    }
+  final currentStepRefId = currentStep.refId;
+
+  switch (currentStep.type) {
+    case "dialog":
+      return true;
+
+    case "objective":
+    case "essay":
+      return isStepCompleted(currentStepRefId);
+
+    default:
+      throw ArgumentError("Invalid type step: ${currentStep.type}");
   }
+}
 }
