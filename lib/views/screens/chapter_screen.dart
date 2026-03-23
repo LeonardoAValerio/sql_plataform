@@ -5,6 +5,7 @@ import 'package:sql_plataform/core/utils/path.dart';
 import 'package:sql_plataform/models/chapter.dart';
 import 'package:sql_plataform/models/level.dart';
 import 'package:sql_plataform/views/widgets/chapter/level_card.dart';
+import 'package:sql_plataform/views/screens/faq_screen.dart';
 
 class ChapterScreen extends StatefulWidget {
   final int chapterId;
@@ -80,7 +81,17 @@ class _ChapterScreenState extends State<ChapterScreen> {
             child: Column(
               children: [
                 SizedBox(height: 32),
-                Image(image: AssetImage(pathImg(character.defaultImg!))),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FaqScreen(widget.chapterId),
+                      ),
+                    );
+                  },
+                  child: Image(image: AssetImage(pathImg(character.defaultImg!))),
+                ),
                 SizedBox(height: 32),
                 SizedBox(
                   width: 300,

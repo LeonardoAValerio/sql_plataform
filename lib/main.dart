@@ -13,9 +13,9 @@ void main() async {
   
   await ObjectBoxManager.create();
 
-  // final seeder = DatabaseSeeder();
-  // await seeder.clearAll();
-  // await seeder.seedAll();
+  final seeder = DatabaseSeeder();
+  await seeder.clearAll();
+  await seeder.seedAll();
 
   runApp(const MyApp());
 }

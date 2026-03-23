@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sql_plataform/core/database/objectbox.g.dart';
 import 'package:sql_plataform/core/database/objectbox_manager.dart';
-import 'package:sql_plataform/models/chapter.dart';
-import 'package:sql_plataform/models/level.dart';
 import 'package:sql_plataform/views/screens/chapter_screen.dart';
 
 class HubScreen extends StatefulWidget {
